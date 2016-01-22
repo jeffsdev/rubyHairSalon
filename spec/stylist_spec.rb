@@ -21,4 +21,14 @@ describe(Stylist) do
     end
   end
 
+  describe('#save') do
+  it('lets you save customers to the database') do
+    stylist1 = Stylist.new({id: nil,
+                            first_name: 'Ashley',
+                            last_name: 'Smith',
+                            phone: '1113335555'})
+    stylist1.save()
+    expect(Stylist.all()).to(eq([stylist1]))
+  end
+end
 end
