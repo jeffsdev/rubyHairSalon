@@ -1,0 +1,17 @@
+<h1>Client Page</h1>
+
+<p><%= @client.first_name() %> <%= @client.last_name()%></p>
+<p>phone: <%= @client.phone() %></p>
+
+
+
+
+
+<form action="/clients/<%= @client.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Client</button>
+</form>
+
+<a href="/clients/<%= @client.id() %>/edit_client">Update Stylist Information</a>
+
+<a href="/clients">Back</a>

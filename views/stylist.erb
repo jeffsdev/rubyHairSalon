@@ -1,4 +1,17 @@
 <h1>Stylist Page</h1>
 
+<p><%= @stylist.first_name() %> <%= @stylist.last_name()%></p>
+<p>phone: <%= @stylist.phone() %></p>
+
+
+
+
+
+<form action="/stylists/<%= @stylist.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Stylist</button>
+</form>
+
+<a href="/stylists/<%= @stylist.id() %>/edit_stylist">Update Stylist Information</a>
 
 <a href="/stylists">Back</a>

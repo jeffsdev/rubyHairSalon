@@ -1,0 +1,18 @@
+<h1>Update Stylist Information</h1>
+
+<form action="/stylists/<%= @stylist.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <div class="form-group">
+    <label>First Name:</label>
+    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+  </div>
+  <div class="form-group">
+    <label>Last Name:</label>
+    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+  </div>
+  <div class="form-group">
+    <label>Phone:</label>
+    <input type="text" class="form-control" id="phone" name="phone" placeholder="1112223333">
+  </div>
+  <button type="submit" class="btn btn-primary">Update Stylist</button>
+</form>
