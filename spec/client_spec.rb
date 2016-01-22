@@ -23,7 +23,17 @@ describe(Client) do
     end
   end
 
-
+  describe('#save') do
+    it('lets you save clients to the database') do
+      client1 = Client.new({id: nil,
+                            first_name: 'Sarah',
+                            last_name: 'McClient',
+                            phone: '1113335511',
+                            stylist_id: 1})
+      client1.save()
+      expect(Client.all()).to(eq([client1]))
+    end
+  end
 
 
 end
