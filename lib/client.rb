@@ -48,6 +48,15 @@ class Client
   DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
 end
 
+def update(attributes)
+  @id = self.id()
+  @first_name = attributes.fetch(:first_name, @first_name)
+  @last_name = attributes.fetch(:last_name, @last_name)
+  @phone = attributes.fetch(:phone, @phone)
+  @stylist_id = attributes.fetch(:stylist_id, @stylist_id)
+  DB.exec("UPDATE clients SET first_name = '#{@first_name}', last_name = '#{@last_name}', phone = '#{@phone}', stylist_id = '#{@stylist_id}' WHERE id = #{self.id()};")
+end
+
 
 def self.find(id)
   found_client = nil

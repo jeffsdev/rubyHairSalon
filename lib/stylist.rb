@@ -45,6 +45,15 @@ class Stylist
   end
 
 
+  def update(attributes)
+    @id = self.id()
+    @first_name = attributes.fetch(:first_name, @first_name)
+    @last_name = attributes.fetch(:last_name, @last_name)
+    @phone = attributes.fetch(:phone, @phone)
+    DB.exec("UPDATE stylists SET first_name = '#{@first_name}', last_name = '#{@last_name}', phone = '#{@phone}' WHERE id = #{self.id()};")
+  end
+
+
   def self.find(id)
     found_stylist = nil
     Stylist.all().each() do |stylist|
