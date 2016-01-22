@@ -1,0 +1,20 @@
+<h1>Stylists</h1>
+
+
+
+<% if @stylists.any?() %>
+  <h3>Here are your stylists:</h3>
+
+  <ul>
+    <% @stylists.each() do |stylist| %>
+      <li><a href="/stylists/<%= stylist.id()%>"><%= stylist.first_name() %></a> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+    <p>There are no stylists yet!</p>
+
+<% end %>
+
+<a href="/stylists/stylist_form">Add A Stylist</a>
