@@ -1,1 +1,18 @@
 <h1>Clients</h1>
+
+<% if @clients.any?() %>
+  <h3>Here are your clients:</h3>
+
+  <ul>
+    <% @clients.each() do |client| %>
+      <li><a href="/clients/<%= client.id()%>"><%= client.first_name() %></a> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+    <p>There are no clients yet!</p>
+
+<% end %>
+
+<a href="/clients/client_form">Add A Client</a>

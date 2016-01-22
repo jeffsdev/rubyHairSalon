@@ -33,5 +33,24 @@ post('/stylists') do
 end
 
 get('/clients') do
+  @clients = Client.all()
   erb(:clients)
+end
+
+get('/clients/client_form') do
+  erb(:client_form)
+end
+
+post('/clients') do
+  first_name = params.fetch('first_name')
+  last_name = params.fetch('last_name')
+  phone = params.fetch('phone')
+  stylist_id = params.fetch('stylist_id').to_i()
+  client = Client.new({first_name: first_name,
+                       last_name: last_name,
+                       phone: phone,
+                       id: nil,
+                       stylist_id: stylist_id})
+  client.save()
+  erb(:success)
 end
