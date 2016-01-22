@@ -22,13 +22,32 @@ describe(Stylist) do
   end
 
   describe('#save') do
-  it('lets you save customers to the database') do
-    stylist1 = Stylist.new({id: nil,
-                            first_name: 'Ashley',
-                            last_name: 'Smith',
-                            phone: '1113335555'})
-    stylist1.save()
-    expect(Stylist.all()).to(eq([stylist1]))
+    it('lets you save stylists to the database') do
+      stylist1 = Stylist.new({id: nil,
+                              first_name: 'Ashley',
+                              last_name: 'Smith',
+                              phone: '1113335555'})
+      stylist1.save()
+      expect(Stylist.all()).to(eq([stylist1]))
+    end
   end
-end
+
+  describe('#delete') do
+    it('lets you delete stylists from the database') do
+      stylist1 = Stylist.new({id: nil,
+                              first_name: 'Ashley',
+                              last_name: 'Smith',
+                              phone: '1113335555'})
+      stylist1.save()
+      stylist2 = Stylist.new({id: nil,
+                              first_name: 'Liz',
+                              last_name: 'Jones',
+                              phone: '1117774444'})
+      stylist2.save()
+      stylist1.delete()
+      expect(Stylist.all()).to(eq([stylist2]))
+    end
+  end
+
+
 end

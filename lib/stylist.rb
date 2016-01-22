@@ -40,4 +40,8 @@ class Stylist
     @id = result.first().fetch("id").to_i()
   end
 
+  def delete
+    DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
+  end
+
 end
