@@ -67,4 +67,16 @@ describe(Client) do
     end
   end
 
+  describe("#id") do
+    it("sets its ID when you save it") do
+      client = Client.new({id: nil,
+                            first_name: 'Sarah',
+                            last_name: 'McClient',
+                            phone: '1113335511',
+                            stylist_id: 1})
+      client.save()
+      expect(client.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
 end

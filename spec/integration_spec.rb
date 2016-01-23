@@ -14,5 +14,45 @@ describe('adding a new stylist', {:type => :feature}) do
     click_button('Add Stylist')
     expect(page).to have_content('Success!')
   end
+end
 
+describe('deleting a stylist', {:type => :feature}) do
+  it('allows the user to delete stylists from the salon') do
+    visit('/stylists')
+    click_link('Add A Stylist')
+    fill_in('first_name', :with =>'Ashley')
+    fill_in('last_name', :with =>'Smith')
+    fill_in('phone', :with =>'123')
+    click_button('Add Stylist')
+    expect(page).to have_content('Success!')
+    click_link("Back")
+    click_link('View Stylists')
+    click_link('Ashley Smith')
+    click_button('Delete Stylist')
+    expect(page).to have_content('There are no stylists yet!')
+  end
+end
+
+describe('updating a stylist', {:type => :feature}) do
+  it('allows the user to update stylist info') do
+    visit('/stylists')
+    click_link('Add A Stylist')
+    fill_in('first_name', :with =>'Ashley')
+    fill_in('last_name', :with =>'Smith')
+    fill_in('phone', :with =>'123')
+    click_button('Add Stylist')
+    expect(page).to have_content('Success!')
+    click_link("Back")
+    click_link('View Stylists')
+    click_link('Ashley Smith')
+    click_link('Update Stylist Information')
+    fill_in('first_name', :with =>'Ashley')
+    fill_in('last_name', :with =>'Roberts')
+    fill_in('phone', :with =>'123')
+    click_button('Update Stylist')
+    expect(page).to have_content('Success!')
+    click_link("Back")
+    click_link('View Stylists')
+    expect(page).to have_content('Ashley Roberts')
+  end
 end

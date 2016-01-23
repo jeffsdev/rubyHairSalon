@@ -33,6 +33,7 @@ post('/stylists') do
 end
 
 get('/stylists/:id') do
+  @stylists = Stylist.all()
   @stylist = Stylist.find(params.fetch('id').to_i())
   erb(:stylist)
 end
@@ -62,19 +63,13 @@ patch("/stylists/:id") do
   erb(:success)
 end
 
-#------------Clients-------------------------
-
-
-get('/clients') do
-  @clients = Client.all()
-  erb(:clients)
-end
-
-get('/clients/client_form') do
+get('/stylists/:id/client_form') do
+  @stylists = Stylist.all()
+  @stylist = Stylist.find(params.fetch("id").to_i())
   erb(:client_form)
 end
 
-post('/clients') do
+post('/stylists/:id') do
   first_name = params.fetch('first_name')
   last_name = params.fetch('last_name')
   phone = params.fetch('phone')
@@ -87,6 +82,20 @@ post('/clients') do
   client.save()
   erb(:success)
 end
+
+#------------Clients-------------------------
+
+
+get('/clients') do
+  @clients = Client.all()
+  erb(:clients)
+end
+
+get('/clients/client_form') do
+  erb(:client_form)
+end
+
+
 
 get('/clients/:id') do
   @client = Client.find(params.fetch('id').to_i())
@@ -117,5 +126,20 @@ patch("/clients/:id") do
                        phone: phone,
                        id: nil,
                        stylist_id: stylist_id})
+  erb(:success)
+end
+
+post('/clients') do
+  first_name = params.fetch('first_name')
+  last_name = params.fetch('last_name')
+  phone = params.fetch('phone')
+  stylist_id = params.fetch('stylist_id').to_i()
+  @stylist = Stylist.find(stylist_id)
+  @client = Client.new({first_name: first_name,
+                       last_name: last_name,
+                       phone: phone,
+                       id: nil,
+                       stylist_id: stylist_id})
+  @client.save()
   erb(:success)
 end

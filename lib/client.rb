@@ -45,27 +45,26 @@ class Client
   end
 
   def delete
-  DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
-end
-
-def update(attributes)
-  @id = self.id()
-  @first_name = attributes.fetch(:first_name, @first_name)
-  @last_name = attributes.fetch(:last_name, @last_name)
-  @phone = attributes.fetch(:phone, @phone)
-  @stylist_id = attributes.fetch(:stylist_id, @stylist_id)
-  DB.exec("UPDATE clients SET first_name = '#{@first_name}', last_name = '#{@last_name}', phone = '#{@phone}', stylist_id = '#{@stylist_id}' WHERE id = #{self.id()};")
-end
-
-
-def self.find(id)
-  found_client = nil
-  Client.all().each() do |client|
-    if client.id().==(id)
-      found_client = client
-    end
+    DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
   end
-  found_client
-end
 
+  def update(attributes)
+    @id = self.id()
+    @first_name = attributes.fetch(:first_name, @first_name)
+    @last_name = attributes.fetch(:last_name, @last_name)
+    @phone = attributes.fetch(:phone, @phone)
+    @stylist_id = attributes.fetch(:stylist_id, @stylist_id)
+    DB.exec("UPDATE clients SET first_name = '#{@first_name}', last_name = '#{@last_name}', phone = '#{@phone}', stylist_id = '#{@stylist_id}' WHERE id = #{self.id()};")
+  end
+
+
+  def self.find(id)
+    found_client = nil
+    Client.all().each() do |client|
+      if client.id().==(id)
+        found_client = client
+      end
+    end
+    found_client
+  end
 end

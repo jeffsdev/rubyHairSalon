@@ -1,6 +1,6 @@
 <h1>Add Client</h1>
 
-<form action="/clients" method="post">
+<form action="/stylists/<%= @stylist.id() %>" method="post">
   <div class="form-group">
     <label>First Name:</label>
     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">

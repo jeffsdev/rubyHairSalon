@@ -1,7 +1,7 @@
 <h1>Stylist Page</h1>
 
-<p><%= @stylist.first_name() %> <%= @stylist.last_name()%></p>
-<p>phone: <%= @stylist.phone() %></p>
+<h3><%= @stylist.first_name() %> <%= @stylist.last_name()%></h3>
+<h4>phone: <%= @stylist.phone() %></h4>
 
 
 
@@ -12,6 +12,31 @@
   <button type="submit">Delete Stylist</button>
 </form>
 
-<a href="/stylists/<%= @stylist.id() %>/edit_stylist">Update Stylist Information</a>
+<br>
 
+<% if @stylist.clients().any?() %>
+  <h3>Here are all the clients for this stylist:</h3>
+
+  <ul>
+    <% @stylist.clients().each() do |task| %>
+      <li><%= client.first_name() %> </li>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>There are no clients for this stylist!</p>
+<% end %>
+
+
+
+
+<h2>add client for stylist</h2>
+
+<a href="/stylists/<%= @stylist.id() %>/client_form">Add Client</a>
+
+<br>
+
+
+<a href="/stylists/<%= @stylist.id() %>/edit_stylist">Update Stylist Information</a>
+<br>
 <a href="/stylists">Back</a>
