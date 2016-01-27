@@ -4,7 +4,6 @@ require('./lib/client')
 require('./lib/stylist')
 require('pg')
 also_reload('lib/**/*.rb')
-require('pry')
 
 DB = PG.connect({:dbname => "hair_salon"})
 
@@ -58,14 +57,13 @@ patch("/stylists/:id") do
   @stylists = Stylist.all()
   @stylist = Stylist.find(params.fetch("id").to_i())
   @stylist.update({first_name: first_name,
-                         last_name: last_name,
-                         phone: phone,
-                         id: nil})
+                   last_name: last_name,
+                   phone: phone,
+                   id: nil})
   erb(:success)
 end
 
 get('/stylists/:id/client_form') do
-
   @stylists = Stylist.all()
   @stylist = Stylist.find(params.fetch("id").to_i())
   erb(:client_form)
@@ -87,7 +85,6 @@ end
 
 #------------Clients-------------------------
 
-
 get('/clients') do
   @clients = Client.all()
   erb(:clients)
@@ -96,8 +93,6 @@ end
 get('/clients/client_form') do
   erb(:client_form)
 end
-
-
 
 get('/clients/:id') do
   @client = Client.find(params.fetch('id').to_i())
@@ -112,11 +107,13 @@ delete("/clients/:id") do
 end
 
 get('/clients/:id/edit_client') do
+  @stylists = Stylist.all()
   @client =  Client.find(params.fetch("id").to_i())
   erb(:edit_client)
 end
 
 patch("/clients/:id") do
+  @stylists = Stylist.all()
   first_name = params.fetch('first_name')
   last_name = params.fetch('last_name')
   phone = params.fetch('phone')
@@ -124,10 +121,10 @@ patch("/clients/:id") do
   @clients = Client.all()
   @client = Client.find(params.fetch("id").to_i())
   @client.update({first_name: first_name,
-                       last_name: last_name,
-                       phone: phone,
-                       id: nil,
-                       stylist_id: stylist_id})
+                  last_name: last_name,
+                  phone: phone,
+                  id: nil,
+                  stylist_id: stylist_id})
   erb(:success)
 end
 
@@ -138,10 +135,10 @@ post('/clients') do
   stylist_id = params.fetch('stylist_id').to_i()
   @stylist = Stylist.find(stylist_id)
   @client = Client.new({first_name: first_name,
-                       last_name: last_name,
-                       phone: phone,
-                       id: nil,
-                       stylist_id: stylist_id})
+                        last_name: last_name,
+                        phone: phone,
+                        id: nil,
+                        stylist_id: stylist_id})
   @client.save()
   erb(:success)
 end

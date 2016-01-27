@@ -17,11 +17,11 @@
     <input type="hidden" id="stylist_id" name="stylist_id">
   </div>
   <label>Choose Stylist:</label>
-  <select id='stylist_id' name='stylist_id' type='text'>
+  <select id='stylist_id' name='stylist_id' type='text' class="form-control">
     <% @stylists.each() do |stylist| %>
       <option value="<%= stylist.id()%>"> <%= stylist.first_name() %>  <%= stylist.last_name() %></option>
     <% end %>
   </select>
-
+  <br>
   <button type="submit" class="btn btn-primary">Add Client</button>
 </form>

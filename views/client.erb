@@ -9,9 +9,9 @@
 
 <form action="/clients/<%= @client.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
-  <button type="submit">Delete Client</button>
+  <button type="submit" class="btn btn-danger">Delete Client</button>
 </form>
-
+<br>
 <a href="/clients/<%= @client.id() %>/edit_client">Update Client Information</a>
-
+<br>
 <a href="/clients">Back</a>

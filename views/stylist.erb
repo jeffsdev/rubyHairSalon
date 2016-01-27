@@ -1,17 +1,16 @@
 <h1>Stylist Page</h1>
 
-<h3><%= @stylist.first_name() %> <%= @stylist.last_name()%></h3>
-<h4>phone: <%= @stylist.phone() %></h4>
-
-
-
+<h3>Name: <%= @stylist.first_name() %> <%= @stylist.last_name()%></h3>
+<h4>Phone: <%= @stylist.phone() %></h4>
 
 
 <form action="/stylists/<%= @stylist.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
-  <button type="submit">Delete Stylist</button>
+  <button type="submit" class="btn btn-danger">Delete Stylist</button>
 </form>
 
+<br>
+<a href="/stylists/<%= @stylist.id() %>/edit_stylist">Update Stylist Information</a>
 <br>
 
 <% if @stylist.clients().any?() %>
@@ -30,13 +29,13 @@
 
 
 
-<h2>add client for stylist</h2>
+<h2>Add client for stylist</h2>
 
 <a href="/stylists/<%= @stylist.id() %>/client_form">Add Client</a>
 
 <br>
 
 
-<a href="/stylists/<%= @stylist.id() %>/edit_stylist">Update Stylist Information</a>
+
 <br>
 <a href="/stylists">Back</a>

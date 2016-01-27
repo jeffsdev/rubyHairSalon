@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <%= yield %>
+    <header class="jumbotron">
+      <h1>Hair Salon</h1>
+      <h4>A tiny Ruby web app for managing stylists and clients.</h4>
+    </header>
+    <main class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 col-sm-offset-1">
+          <%= yield %>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
