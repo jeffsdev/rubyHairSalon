@@ -10,7 +10,7 @@
 </form>
 
 <br>
-<a href="/stylists/<%= @stylist.id() %>/edit_stylist">Update Stylist Information</a>
+<a href="/stylists/<%= @stylist.id() %>/edit">Update Stylist Information</a>
 <br>
 
 <% if @stylist.clients().any?() %>
@@ -31,7 +31,7 @@
 
 <h2>Add client for stylist</h2>
 
-<a href="/stylists/<%= @stylist.id() %>/client_form">Add Client</a>
+<a href="/stylists/<%= @stylist.id() %>/new">Add Client</a>
 
 <br>
 
