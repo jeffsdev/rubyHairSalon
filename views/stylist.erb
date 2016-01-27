@@ -18,8 +18,8 @@
   <h3>Here are all the clients for this stylist:</h3>
 
   <ul>
-    <% @stylist.clients().each() do |task| %>
-      <li><%= client.first_name() %> </li>
+    <% @stylist.clients().each() do |client| %>
+      <li><%= client.first_name() %> <%= client.last_name() %></li>
     <% end %>
   </ul>
 
