@@ -56,3 +56,29 @@ describe('updating a stylist', {:type => :feature}) do
     expect(page).to have_content('Ashley Roberts')
   end
 end
+
+describe('adding client to a stylist', {:type => :feature}) do
+  it('allows the user to add a client and tie it to a stylist') do
+    visit('/stylists')
+    click_link('Add A Stylist')
+    fill_in('first_name', :with =>'Ashley')
+    fill_in('last_name', :with =>'Smith')
+    fill_in('phone', :with =>'123')
+    click_button('Add Stylist')
+    expect(page).to have_content('Success!')
+    click_link("Back")
+    click_link('View Stylists')
+    click_link('Ashley Smith')
+    click_link('Add Client')
+    fill_in('first_name', :with =>'Sarah')
+    fill_in('last_name', :with =>'Jones')
+    fill_in('phone', :with =>'445')
+    select "Ashley Smith", :from => "stylist_id"
+    click_button('Add Client')
+    expect(page).to have_content('Success!')
+    click_link("Back")
+    click_link('View Stylists')
+    click_link('Ashley Smith')
+    expect(page).to have_content('Sarah Jones')
+  end
+end
